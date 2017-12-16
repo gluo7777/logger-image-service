@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+<div layout:fragment="content" class="row">
+    <div class="col-xs-8 col-md-8">
+        <h3>
+            <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Image</a>
+        </h3>
+        <h2>Image List</h2>
+        <div class="table-responsive">
+            <table class="table" id="imageModel-table">
+                <thead>
+                <tr>
+                    <th>Image extension</th>
+                    <th>Image tag</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="imageModel : ${images}">
+                    <td><a th:text="${imageModel.id} + '.' + ${imageModel.extension}" th:href="@{'/show/' + ${imageModel.id}}"></a></td>
+                    <td th:text="${imageModel.tag}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
